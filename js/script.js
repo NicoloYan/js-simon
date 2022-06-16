@@ -3,31 +3,23 @@
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 
 // Creo un array vuoto che popolerò con i numeri dati dall'utente
-let userNumbers = []
+let userNumbers = [];
 
-// Creo un array vuoto che popolerò con i numeri giusti dati dall'utente
-let userCorrectNumbers = []
+// Creo un array vuoto che popolerò con i numeri corretti dati dall'utente
+let userCorrectNumbers = [];
 
 // Creo una variabile per il singolo numero dato dall'utente
-let userNumber
+let userNumber;
 
 // Genero array randomNumbers con 5 numeri casuali non ripetuti
-let randomNumbers = []
-numberGenerator(5, 1, 30)
-console.log('Random numbers', randomNumbers)
+let randomNumbers = [];
+numberGenerator(5, 1, 30);
+
 // Alert che mostra randomNumbers
-alert(randomNumbers)
+alert(randomNumbers);
+
 // Dopo 30 secondi
-const timeOut = setTimeout(numberChecker, 5000);
-    // 5 prompt per l'utente chiedendo i numeri appena visualizzati.
-    // Pushare i 5 numeri dati dall'utente in un array userNumbers
-    // Scorro il contenuto di userNumbers e un numero alla volta verifico se sono contenuti in randomNumbers
-    // Se randomNumbers.includes(userNumber)
-
-
-
-
-
+const timeOut = setTimeout(numberChecker, 30000);
 
 
 // ----------
@@ -54,23 +46,25 @@ function numberGenerator(numberOfElements, min, max) {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
-  
+
+// Funzione sulla quale è incentrato il gioco: verifica se il numero dato dall'utente è corretto e, se lo è, lo pusha in userCorrectNumbers.
+// In seguito stampa l'esito del gioco
+
 function numberChecker() {
     
     for(let i = 0; i < 5; i++) {
-        userNumber = parseInt(prompt('Dimmi i numeri che hai appena visto uno per volta'))
-        userNumbers.push(userNumber)
-        console.log('Numeri utente', userNumbers)
-    }
+        // Chiedo i singoli numeri all'utente
+        userNumber = parseInt(prompt('Dimmi i numeri che hai appena visto uno per volta'));
+        // Pusho il singolo numero in userNumbers
+        userNumbers.push(userNumber);
 
-    if (randomNumbers.includes(userNumber)) {
-        userCorrectNumbers.push(userNumber)
+        // Se il numero dato dall'utente è corretto, 
+            // lo pusho in userCorrectNumbers
+        if (randomNumbers.includes(userNumber)) {
+            userCorrectNumbers.push(userNumber);
+        }
     }
-    console.log('Numeri giusti', userCorrectNumbers)
+    // Comunico all'utente quanti e quali numeri ha indovinato
+    alert('Numeri corretti ' + userCorrectNumbers);
+    alert(userCorrectNumbers.length + ' numeri corretti');
 }
-
-
- // 5 prompt per l'utente chiedendo i numeri appena visualizzati.
-    // Pushare i 5 numeri dati dall'utente in un array userNumbers
-    // Scorro il contenuto di userNumbers e un numero alla volta verifico se sono contenuti in randomNumbers
-    // Se randomNumbers.includes(userNumber)
